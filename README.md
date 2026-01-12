@@ -202,6 +202,5 @@ This project is for **educational purposes only**.
 
 For questions or improvements, feel free to open an issue or submit a pull request.
 
-```
 
 
