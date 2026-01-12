@@ -204,13 +204,4 @@ For questions or improvements, feel free to open an issue or submit a pull reque
 
 ```
 
----
 
-Si tu veux, je peux aussi :
-- adapter le README au **format exact demandé par ton professeur**
-- le rendre **plus court** ou **plus marketing**
-- ajouter une section **Screenshots / Demo**
-- l’écrire en **français**
-
-Dis-moi.
-```
