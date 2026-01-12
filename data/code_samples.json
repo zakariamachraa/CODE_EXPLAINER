@@ -1,0 +1,90 @@
+[
+    {
+      "id": "c-fibonacci-recursive",
+      "language": "c",
+      "title": "Recursive Fibonacci Implementation",
+      "code_fragment": "#include <stdio.h>\n\nint fibonacci(int n) {\n    if (n <= 1)\n        return n;\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n\nint main() {\n    int num = 10;\n    printf(\"Fibonacci of %d: %d\\n\", num, fibonacci(num));\n    return 0;\n}",
+      "explanation": "Implements the Fibonacci sequence using recursion. The function has two base cases: when n <= 1, it returns n directly. For larger values, it recursively calls itself with n-1 and n-2, summing the results. This demonstrates classic recursive problem-solving but has exponential time complexity O(2^n). The main function demonstrates typical C program structure with stdio.h for I/O operations.",
+      "tags": ["recursion", "algorithms", "mathematics", "fibonacci", "base-cases"]
+    },
+    {
+      "id": "c-pointer-swap",
+      "language": "c",
+      "title": "Pointer-Based Value Swap",
+      "code_fragment": "void swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}",
+      "explanation": "Demonstrates pointer dereferencing to swap two integer values in-place. Uses the dereference operator (*) to access and modify values through pointers. The temporary variable stores one value during the exchange. This is a fundamental C pattern for modifying variables passed by reference, avoiding the need to return multiple values.",
+      "tags": ["pointers", "memory", "utility", "dereferencing", "in-place"]
+    },
+    {
+      "id": "c-array-traversal",
+      "language": "c",
+      "title": "Array Traversal and Summation",
+      "code_fragment": "#include <stdio.h>\n\nint sum_array(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; i++) {\n        sum += arr[i];\n    }\n    return sum;\n}",
+      "explanation": "Iterates through an array using a for loop, accumulating the sum of all elements. Demonstrates array indexing, loop control with size parameter, and accumulator pattern. The function takes array and size as parameters, following C convention where array size must be passed separately since arrays decay to pointers.",
+      "tags": ["arrays", "loops", "iteration", "accumulator"]
+    },
+    {
+      "id": "cpp-smart-pointer",
+      "language": "c++",
+      "title": "RAII Smart Pointer Template",
+      "code_fragment": "template<typename T>\nclass ScopedPtr {\npublic:\n    explicit ScopedPtr(T* ptr) : ptr_(ptr) {}\n    ~ScopedPtr() { delete ptr_; }\n    T* operator->() { return ptr_; }\n    T& operator*() { return *ptr_; }\nprivate:\n    T* ptr_;\n};",
+      "explanation": "Implements RAII (Resource Acquisition Is Initialization) pattern using a template class. The constructor takes ownership of a raw pointer, and the destructor automatically deletes it, preventing memory leaks. The arrow and dereference operators provide pointer-like syntax. This demonstrates modern C++ memory management principles, ensuring automatic cleanup when the object goes out of scope.",
+      "tags": ["raii", "memory", "templates", "smart-pointers", "destructors"]
+    },
+    {
+      "id": "cpp-vector-operations",
+      "language": "c++",
+      "title": "STL Vector Manipulation",
+      "code_fragment": "#include <vector>\n#include <algorithm>\n#include <iostream>\n\nint main() {\n    std::vector<int> vec = {3, 1, 4, 1, 5};\n    std::sort(vec.begin(), vec.end());\n    for (int x : vec) {\n        std::cout << x << \" \";\n    }\n    return 0;\n}",
+      "explanation": "Demonstrates C++ STL (Standard Template Library) usage with vectors. Creates a vector with initializer list syntax, uses std::sort algorithm with iterators, and iterates with range-based for loop. Shows modern C++ features: automatic type deduction, STL algorithms, and container abstractions. The code sorts integers and prints them, showcasing common STL patterns.",
+      "tags": ["stl", "vectors", "algorithms", "iterators", "range-based-for"]
+    },
+    {
+      "id": "cpp-class-inheritance",
+      "language": "c++",
+      "title": "Class Inheritance and Polymorphism",
+      "code_fragment": "class Animal {\npublic:\n    virtual void speak() = 0;\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() override { std::cout << \"Woof!\" << std::endl; }\n};",
+      "explanation": "Defines an abstract base class Animal with pure virtual function speak(), and a derived class Dog that implements it. Demonstrates inheritance, polymorphism, and virtual function dispatch. The override keyword ensures correct virtual function overriding. This is fundamental OOP in C++, enabling runtime polymorphism through base class pointers.",
+      "tags": ["inheritance", "polymorphism", "virtual-functions", "abstract-classes"]
+    },
+    {
+      "id": "py-quicksort",
+      "language": "python",
+      "title": "Quicksort Algorithm Implementation",
+      "code_fragment": "def quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quicksort(left) + middle + quicksort(right)",
+      "explanation": "Implements the Quicksort divide-and-conquer algorithm using Python list comprehensions. Selects middle element as pivot, partitions into three lists (less than, equal to, greater than), and recursively sorts sublists. Demonstrates Python's expressive syntax, list comprehensions, and functional-style recursion. Time complexity is O(n log n) average case, O(n²) worst case.",
+      "tags": ["sorting", "algorithms", "recursion", "list-comprehensions", "divide-conquer"]
+    },
+    {
+      "id": "py-async-dfs",
+      "language": "python",
+      "title": "Asynchronous Depth-First Search",
+      "code_fragment": "async def dfs(node, seen):\n    if node in seen:\n        return\n    seen.add(node)\n    for neighbor in node.neighbors:\n        await dfs(neighbor, seen)",
+      "explanation": "Implements asynchronous graph traversal using async/await syntax. Uses a set to track visited nodes, preventing cycles. Recursively traverses neighbors with await, allowing concurrent execution. Demonstrates Python's async programming model for I/O-bound or concurrent operations. The async keyword enables cooperative multitasking without blocking the event loop.",
+      "tags": ["graph", "async", "recursion", "traversal", "concurrency"]
+    },
+    {
+      "id": "py-class-decorator",
+      "language": "python",
+      "title": "Class with Property Decorator",
+      "code_fragment": "class Circle:\n    def __init__(self, radius):\n        self._radius = radius\n    \n    @property\n    def area(self):\n        return 3.14159 * self._radius ** 2\n    \n    @property\n    def radius(self):\n        return self._radius",
+      "explanation": "Demonstrates Python's property decorator for computed attributes and encapsulation. The _radius uses naming convention for 'private' attributes. @property allows accessing area and radius like attributes while area is computed. This follows Pythonic design patterns, providing clean API while maintaining data integrity. Shows object-oriented Python with getter-like behavior without explicit getter methods.",
+      "tags": ["classes", "decorators", "properties", "encapsulation", "pythonic"]
+    },
+    {
+      "id": "py-list-comprehension",
+      "language": "python",
+      "title": "Advanced List Comprehensions",
+      "code_fragment": "squares = [x**2 for x in range(10) if x % 2 == 0]\nmatrix = [[i*j for j in range(3)] for i in range(3)]",
+      "explanation": "Shows Python list comprehensions with filtering and nested structures. First creates list of even squares using conditional filter. Second creates 3x3 matrix using nested comprehension. Demonstrates Python's concise, readable syntax for data transformation. List comprehensions are more Pythonic and often faster than equivalent loops, providing functional programming style in Python.",
+      "tags": ["list-comprehensions", "functional", "filtering", "nested", "pythonic"]
+    },
+    {
+      "id": "py-context-manager",
+      "language": "python",
+      "title": "Custom Context Manager",
+      "code_fragment": "class FileManager:\n    def __init__(self, filename, mode):\n        self.filename = filename\n        self.mode = mode\n    \n    def __enter__(self):\n        self.file = open(self.filename, self.mode)\n        return self.file\n    \n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.file.close()",
+      "explanation": "Implements context manager protocol with __enter__ and __exit__ methods, enabling 'with' statement usage. Ensures file is properly closed even if exceptions occur. Demonstrates Python's resource management pattern, similar to RAII in C++. The __exit__ method receives exception information, allowing error handling. This pattern is essential for proper resource cleanup in Python.",
+      "tags": ["context-managers", "resource-management", "with-statement", "protocols"]
+    }
+  ]

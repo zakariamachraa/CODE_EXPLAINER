@@ -1,0 +1,433 @@
+:root {
+    --bg: #040712;
+    --glass: rgba(10, 16, 35, 0.8);
+    --accent: #5be7ff;
+    --text: #f5f7ff;
+    --muted: #9aa0b5;
+    --outline: rgba(255, 255, 255, 0.08);
+  }
+  
+  body.dark {
+    --bg: #f5f7ff;
+    --glass: rgba(255, 255, 255, 0.8);
+    --accent: #5f2eea;
+    --text: #101225;
+    --muted: #444a66;
+    --outline: rgba(0, 0, 0, 0.08);
+  }
+  
+  * {
+    box-sizing: border-box;
+    font-family: "Space Grotesk", system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background: radial-gradient(circle at 20% 20%, #121b37, var(--bg));
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  
+  #grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  main.glass {
+    position: relative;
+    z-index: 1;
+    width: min(1200px, 100%);
+    backdrop-filter: blur(18px);
+    background: var(--glass);
+    border: 1px solid var(--outline);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+  
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 0;
+  }
+  
+  h1 {
+    margin: 8px 0 0;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+  }
+  
+  .subcopy {
+    margin: 8px 0 0;
+    color: var(--muted);
+  }
+  
+  #themeToggle {
+    border: 1px solid var(--outline);
+    background: transparent;
+    color: var(--text);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  #themeToggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+  }
+  
+  .controls {
+    display: flex;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  
+  .select {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: var(--muted);
+  }
+  
+  select {
+    margin-top: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 14px;
+    border: 1px solid var(--outline);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  select:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent);
+  }
+  
+  button#explainBtn {
+    min-width: 160px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(120deg, var(--accent), #7f5af0);
+    color: #040712;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 12px 24px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(91, 231, 255, 0.3);
+  }
+  
+  button#explainBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(91, 231, 255, 0.5);
+  }
+  
+  button#explainBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .editor textarea {
+    width: 100%;
+    min-height: 240px;
+    border-radius: 20px;
+    border: 1px solid var(--outline);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text);
+    padding: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    resize: vertical;
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    transition: border-color 0.2s;
+  }
+  
+  .editor textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  .output {
+    margin-top: 32px;
+    border-radius: 20px;
+    border: 1px solid var(--outline);
+    padding: 24px;
+    min-height: 140px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+  
+  .output article {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .output h2 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--outline);
+    padding-bottom: 12px;
+  }
+  
+  .output h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  
+  .output ul {
+    padding-left: 20px;
+    line-height: 1.8;
+  }
+  
+  .output li {
+    margin-bottom: 8px;
+    color: var(--muted);
+  }
+  
+  .placeholder {
+    color: var(--muted);
+    margin: 0;
+    font-style: italic;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  /* Summary Section */
+  .summary {
+    margin-bottom: 24px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  
+  .summary p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  
+  /* Reasoning Section */
+  .reasoning {
+    margin-bottom: 24px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+  
+  .reasoning ul {
+    margin: 0;
+    padding-left: 24px;
+  }
+  
+  /* Line-by-Line Section */
+  .line-by-line-section {
+    margin-top: 32px;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    border: 1px solid var(--outline);
+  }
+  
+  .line-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .line-explanation {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 16px;
+    border-left: 3px solid var(--accent);
+    transition: all 0.2s ease;
+  }
+  
+  .line-explanation:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+    border-left-color: #7f5af0;
+  }
+  
+  .line-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .line-number {
+    background: linear-gradient(135deg, var(--accent), #7f5af0);
+    color: var(--bg);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    min-width: 40px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(91, 231, 255, 0.3);
+  }
+  
+  .line-code {
+    flex: 1;
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre;
+    min-width: 0;
+  }
+  
+  .line-desc {
+    margin: 0;
+    padding-left: 52px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding-top: 8px;
+  }
+  
+  /* References Section */
+  .references {
+    margin-top: 32px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+  
+  .references h3 {
+    margin-top: 0;
+  }
+  
+  .reference {
+    border-radius: 16px;
+    border: 1px solid var(--outline);
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    margin-bottom: 16px;
+    transition: all 0.2s;
+  }
+  
+  .reference:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  
+  .reference .title {
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+  
+  .reference p {
+    margin: 8px 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  
+  .reference code {
+    display: block;
+    margin-top: 12px;
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    white-space: pre-wrap;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    main.glass {
+      padding: 20px;
+    }
+    
+    .controls {
+      flex-direction: column;
+    }
+    
+    button#explainBtn {
+      width: 100%;
+    }
+    
+    .line-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .line-code {
+      width: 100%;
+      margin-top: 8px;
+    }
+    
+    .line-desc {
+      padding-left: 0;
+      padding-top: 12px;
+    }
+    
+    .line-number {
+      align-self: flex-start;
+    }
+    
+    .output h2 {
+      font-size: 1.3rem;
+    }
+    
+    .summary,
+    .reasoning,
+    .line-by-line-section,
+    .references {
+      padding: 16px;
+    }
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7f5af0;
+  }

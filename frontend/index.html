@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Code Explainer AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="grid"></canvas>
+    <main class="glass">
+      <header>
+        <div>
+          <p class="eyebrow">AI Powered</p>
+          <h1>Explain Your Code</h1>
+          <p class="subcopy">Supports Python, C, and C++ snippets with RAG insights.</p>
+        </div>
+        <button id="themeToggle" aria-label="Toggle theme">⚡</button>
+      </header>
+
+      <section class="controls">
+        <label class="select">
+          <span>Language</span>
+          <select id="language">
+            <option value="">Auto detect</option>
+            <option value="python">Python</option>
+            <option value="c">C</option>
+            <option value="c++">C++</option>
+          </select>
+        </label>
+        <button id="explainBtn">Explain</button>
+      </section>
+
+      <section class="editor">
+        <textarea
+          id="code"
+          spellcheck="false"
+          placeholder="Paste your code here..."
+        ></textarea>
+      </section>
+
+      <section class="output" id="output">
+        <p class="placeholder">Your explanation will appear here.</p>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>
