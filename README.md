@@ -1,9 +1,3 @@
-Voici un **README.md complet, professionnel et prêt pour GitHub**, adapté à ton projet **AI Simple Code Explainer** et cohérent avec le rapport et la présentation.
-
-Tu peux le copier-coller directement dans `README.md`.
-
----
-
 ```markdown
 # AI Simple Code Explainer 🧠💻
 
